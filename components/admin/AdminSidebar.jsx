@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname } from "next/navigation"
-import { HomeIcon, ShieldCheckIcon, StoreIcon, TicketPercentIcon } from "lucide-react"
+import { HomeIcon, PlusSquareIcon, ShoppingBagIcon, TicketPercentIcon, UsersIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { assets } from "@/assets/assets"
@@ -12,8 +12,9 @@ const AdminSidebar = () => {
 
     const sidebarLinks = [
         { name: 'Dashboard', href: '/admin', icon: HomeIcon },
-        { name: 'Stores', href: '/admin/stores', icon: StoreIcon },
-        { name: 'Approve Store', href: '/admin/approve', icon: ShieldCheckIcon },
+        { name: 'Add Product', href: '/admin/add-product', icon: PlusSquareIcon },
+        { name: 'Customers', href: '/admin/customers', icon: UsersIcon },
+        { name: 'Orders', href: '/admin/orders', icon: ShoppingBagIcon },
         { name: 'Coupons', href: '/admin/coupons', icon: TicketPercentIcon  },
     ]
 
@@ -21,7 +22,7 @@ const AdminSidebar = () => {
         <div className="inline-flex h-full flex-col gap-5 border-r border-slate-200 sm:min-w-60">
             <div className="flex flex-col gap-3 justify-center items-center pt-8 max-sm:hidden">
                 <Image className="w-14 h-14 rounded-full" src={assets.gs_logo} alt="" width={80} height={80} />
-                <p className="text-slate-700">Hi, GreatStack</p>
+                <p className="text-slate-700">Hi, DEVMARKETER</p>
             </div>
 
             <div className="max-sm:mt-6">

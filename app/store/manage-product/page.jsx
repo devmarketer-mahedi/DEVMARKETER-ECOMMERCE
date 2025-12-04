@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { toast } from "react-hot-toast"
 import Image from "next/image"
 import Loading from "@/components/Loading"
-import { productDummyData } from "@/assets/assets"
+import { Trash2 } from "lucide-react"
 
 export default function StoreManageProducts() {
 
@@ -13,14 +13,33 @@ export default function StoreManageProducts() {
     const [products, setProducts] = useState([])
 
     const fetchProducts = async () => {
-        setProducts(productDummyData)
-        setLoading(false)
+        try {
+            const res = await fetch('/api/product')
+            const data = await res.json()
+            if (Array.isArray(data)) {
+                setProducts(data)
+            }
+        } catch (error) {
+            toast.error("Failed to fetch products")
+        } finally {
+            setLoading(false)
+        }
     }
 
-    const toggleStock = async (productId) => {
-        // Logic to toggle the stock of a product
-
-
+    const deleteProduct = async (id) => {
+        try {
+            const res = await fetch(`/api/product/${id}`, {
+                method: 'DELETE'
+            })
+            if (res.ok) {
+                toast.success("Product deleted")
+                fetchProducts()
+            } else {
+                toast.error("Failed to delete product")
+            }
+        } catch (error) {
+            toast.error("Something went wrong")
+        }
     }
 
     useEffect(() => {
@@ -47,7 +66,9 @@ export default function StoreManageProducts() {
                         <tr key={product.id} className="border-t border-gray-200 hover:bg-gray-50">
                             <td className="px-4 py-3">
                                 <div className="flex gap-2 items-center">
-                                    <Image width={40} height={40} className='p-1 shadow rounded cursor-pointer' src={product.images[0]} alt="" />
+                                    <div className="relative w-10 h-10">
+                                        <Image fill className='object-cover rounded' src={product.images[0] || "https://via.placeholder.com/40"} alt="" />
+                                    </div>
                                     {product.name}
                                 </div>
                             </td>
@@ -55,11 +76,9 @@ export default function StoreManageProducts() {
                             <td className="px-4 py-3 hidden md:table-cell">{currency} {product.mrp.toLocaleString()}</td>
                             <td className="px-4 py-3">{currency} {product.price.toLocaleString()}</td>
                             <td className="px-4 py-3 text-center">
-                                <label className="relative inline-flex items-center cursor-pointer text-gray-900 gap-3">
-                                    <input type="checkbox" className="sr-only peer" onChange={() => toast.promise(toggleStock(product.id), { loading: "Updating data..." })} checked={product.inStock} />
-                                    <div className="w-9 h-5 bg-slate-300 rounded-full peer peer-checked:bg-green-600 transition-colors duration-200"></div>
-                                    <span className="dot absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-transform duration-200 ease-in-out peer-checked:translate-x-4"></span>
-                                </label>
+                                <button onClick={() => deleteProduct(product.id)} className="text-red-500 hover:text-red-700">
+                                    <Trash2 size={18} />
+                                </button>
                             </td>
                         </tr>
                     ))}

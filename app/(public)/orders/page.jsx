@@ -1,4 +1,5 @@
 'use client'
+export const dynamic = 'force-dynamic';
 import PageTitle from "@/components/PageTitle"
 import { useEffect, useState } from "react";
 import OrderItem from "@/components/OrderItem";
@@ -7,10 +8,14 @@ import { orderDummyData } from "@/assets/assets";
 export default function Orders() {
 
     const [orders, setOrders] = useState([]);
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         setOrders(orderDummyData)
     }, []);
+
+    if (!mounted) return null;
 
     return (
         <div className="min-h-[70vh] mx-6">

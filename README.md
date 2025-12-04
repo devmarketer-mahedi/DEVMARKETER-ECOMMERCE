@@ -1,6 +1,11 @@
 <div align="center">
-  <h1><img src="https://gocartshop.in/favicon.ico" width="20" height="20" alt="GoCart Favicon">
-   GoCart</h1>
+  <h1>
+    <img src="https://gocartshop.in/favicon.ico" width="30" height="30" alt="DEVMARKETER Logo">
+    DEVMARKETER
+  </h1>
+  <p>
+    <strong>Your Ultimate Destination for Smart Gadgets & Innovation</strong>
+  </p>
   <p>
     An open-source multi-vendor e-commerce platform built with Next.js and Tailwind CSS.
   </p>
@@ -18,50 +23,75 @@
 - [✨ Features](#-features)
 - [🛠️ Tech Stack](#-tech-stack)
 - [🚀 Getting Started](#-getting-started)
+- [👤 Author](#-author)
 - [🤝 Contributing](#-contributing)
 - [📜 License](#-license)
 
 ---
 
-## Features
+## ✨ Features <a name="-features"></a>
 
 - **Multi-Vendor Architecture:** Allows multiple vendors to register, manage their own products, and sell on a single platform.
 - **Customer-Facing Storefront:** A beautiful and responsive user interface for customers to browse and purchase products.
 - **Vendor Dashboards:** Dedicated dashboards for vendors to manage products, view sales analytics, and track orders.
 - **Admin Panel:** A comprehensive dashboard for platform administrators to oversee vendors, products, and commissions.
+- **Secure Authentication:** Robust user and vendor authentication system.
+- **Payment Integration:** Seamless payment processing for smooth transactions.
 
 ## 🛠️ Tech Stack <a name="-tech-stack"></a>
 
-- **Framework:** Next.js
-- **Styling:** Tailwind CSS
-- **UI Components:** Lucide React for icons
-- **State Management:** Redux Toolkit
+- **Framework:** [Next.js](https://nextjs.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components:** [Lucide React](https://lucide.dev/)
+- **State Management:** [Redux Toolkit](https://redux-toolkit.js.org/)
+- **Authentication:** Stack Auth
 
 ## 🚀 Getting Started <a name="-getting-started"></a>
 
-First, install the dependencies. We recommend using `npm` for this project.
+To get a local copy up and running, follow these simple steps.
 
-```bash
-npm install
-```
+### Prerequisites
 
-Then, run the development server:
+- Node.js (v18 or higher)
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/devmarketer.git
+    ```
+2.  Navigate to the project directory:
+    ```bash
+    cd devmarketer
+    ```
+3.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+### Running the App
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/(public)/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Outfit](https://vercel.com/font), a new font family for Vercel.
+## 👤 Author <a name="-author"></a>
+
+**DEVMARKETER**
+
+- **Website:** [DEVMARKETER](http://localhost:3000)
+- **GitHub:** [@devmarketer-mahedi](https://github.com/devmarketer-mahedi)
+- **LinkedIn:** [Mahedi Hassan](https://www.linkedin.com/in/devmarketer-mahedi/)
+- **Email:** contact@devmarketer.com
+
+_Passionate about building scalable and beautiful web applications._
 
 ---
 
@@ -74,12 +104,3 @@ We welcome contributions! Please see our [CONTRIBUTING.md](./CONTRIBUTING.md) fo
 ## 📜 License <a name="-license"></a>
 
 This project is licensed under the MIT License. See the [LICENSE.md](./LICENSE.md) file for details.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!

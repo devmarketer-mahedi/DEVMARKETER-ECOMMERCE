@@ -1,5 +1,5 @@
 {
-  "name": "gocart",
+  "name": "devmarketer",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,18 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.3.5",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-redux": "^9.2.0",
-    "react-hot-toast": "^2.5.2",
-    "recharts": "^3.1.2",
+    "@reduxjs/toolkit": "^2.8.2",
+    "@stackframe/stack": "^2.8.54",
+    "bcryptjs": "^3.0.3",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.525.0",
-    "@reduxjs/toolkit": "^2.8.2"
+    "next": "15.3.5",
+    "next-auth": "^4.24.13",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.5.2",
+    "react-redux": "^9.2.0",
+    "recharts": "^3.1.2"
   },
   "devDependencies": {
+    "@prisma/client": "^5.22.0",
     "@tailwindcss/postcss": "^4",
+    "eslint": "9.39.1",
+    "eslint-config-next": "16.0.7",
+    "prisma": "^5.22.0",
     "tailwindcss": "^4"
   }
 }

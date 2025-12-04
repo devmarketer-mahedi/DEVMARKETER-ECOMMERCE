@@ -1,4 +1,5 @@
 'use client'
+export const dynamic = 'force-dynamic';
 import Counter from "@/components/Counter";
 import OrderSummary from "@/components/OrderSummary";
 import PageTitle from "@/components/PageTitle";
@@ -13,12 +14,32 @@ export default function Cart() {
     const currency = process.env.NEXT_PUBLIC_CURRENCY_SYMBOL || '$';
     
     const { cartItems } = useSelector(state => state.cart);
-    const products = useSelector(state => state.product.list);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [mounted, setMounted] = useState(false);
 
     const dispatch = useDispatch();
 
     const [cartArray, setCartArray] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
+
+    useEffect(() => {
+        setMounted(true);
+        const fetchProducts = async () => {
+            try {
+                const res = await fetch('/api/product');
+                const data = await res.json();
+                if (Array.isArray(data)) {
+                    setProducts(data);
+                }
+            } catch (error) {
+                console.error("Failed to fetch products", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchProducts();
+    }, []);
 
     const createCartArray = () => {
         setTotalPrice(0);
@@ -46,6 +67,9 @@ export default function Cart() {
         }
     }, [cartItems, products]);
 
+    if (!mounted) return null;
+    if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+
     return cartArray.length > 0 ? (
         <div className="min-h-screen mx-6 text-slate-800">
 
@@ -70,7 +94,9 @@ export default function Cart() {
                                     <tr key={index} className="space-x-2">
                                         <td className="flex gap-3 my-4">
                                             <div className="flex gap-3 items-center justify-center bg-slate-100 size-18 rounded-md">
-                                                <Image src={item.images[0]} className="h-14 w-auto" alt="" width={45} height={45} />
+                                                <div className="relative h-14 w-14">
+                                                    <Image src={item.images?.[0] || "https://via.placeholder.com/150"} className="object-cover rounded" alt="" fill />
+                                                </div>
                                             </div>
                                             <div>
                                                 <p className="max-sm:text-sm">{item.name}</p>

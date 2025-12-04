@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useUser } from "@stackframe/stack";
 
 const Navbar = () => {
 
@@ -11,6 +12,7 @@ const Navbar = () => {
 
     const [search, setSearch] = useState('')
     const cartCount = useSelector(state => state.cart.total)
+    const user = useUser();
 
     const handleSearch = (e) => {
         e.preventDefault()
@@ -23,10 +25,7 @@ const Navbar = () => {
                 <div className="flex items-center justify-between max-w-7xl mx-auto py-4  transition-all">
 
                     <Link href="/" className="relative text-4xl font-semibold text-slate-700">
-                        <span className="text-green-600">go</span>cart<span className="text-green-600 text-5xl leading-0">.</span>
-                        <p className="absolute text-xs font-semibold -top-1 -right-8 px-3 p-0.5 rounded-full flex items-center gap-2 text-white bg-green-500">
-                            plus
-                        </p>
+                        DEVMARKETER
                     </Link>
 
                     {/* Desktop Menu */}
@@ -47,17 +46,32 @@ const Navbar = () => {
                             <button className="absolute -top-1 left-3 text-[8px] text-white bg-slate-600 size-3.5 rounded-full">{cartCount}</button>
                         </Link>
 
-                        <button className="px-8 py-2 bg-indigo-500 hover:bg-indigo-600 transition text-white rounded-full">
-                            Login
-                        </button>
+                        {user ? (
+                            <div className="flex items-center gap-4">
+                                <span className="text-sm font-medium">{user.displayName || user.primaryEmail}</span>
+                                <button onClick={() => user.signOut()} className="px-6 py-2 bg-red-500 hover:bg-red-600 transition text-white rounded-full">
+                                    Logout
+                                </button>
+                            </div>
+                        ) : (
+                            <Link href="/login" className="px-8 py-2 bg-indigo-500 hover:bg-indigo-600 transition text-white rounded-full">
+                                Login
+                            </Link>
+                        )}
 
                     </div>
 
                     {/* Mobile User Button  */}
                     <div className="sm:hidden">
-                        <button className="px-7 py-1.5 bg-indigo-500 hover:bg-indigo-600 text-sm transition text-white rounded-full">
-                            Login
-                        </button>
+                        {user ? (
+                            <button onClick={() => user.signOut()} className="px-7 py-1.5 bg-red-500 hover:bg-red-600 text-sm transition text-white rounded-full">
+                                Logout
+                            </button>
+                        ) : (
+                            <Link href="/login" className="px-7 py-1.5 bg-indigo-500 hover:bg-indigo-600 text-sm transition text-white rounded-full">
+                                Login
+                            </Link>
+                        )}
                     </div>
                 </div>
             </div>
