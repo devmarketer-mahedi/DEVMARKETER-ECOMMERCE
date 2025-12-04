@@ -1,6 +1,6 @@
 <div align="center">
   <h1>
-    width="30" height="30" alt="DEVMARKETER Logo">
+    <img src="https://gocartshop.in/favicon.ico" width="30" height="30" alt="DEVMARKETER Logo">
     DEVMARKETER
   </h1>
   <p>
