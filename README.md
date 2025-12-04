@@ -1,6 +1,6 @@
 <div align="center">
   <h1>
-    <img src="[https://gocartshop.in/favicon.ico](https://avatars.githubusercontent.com/u/242471507?v=4)" width="30" height="30" alt="DEVMARKETER Logo">
+    width="30" height="30" alt="DEVMARKETER Logo">
     DEVMARKETER
   </h1>
   <p>
